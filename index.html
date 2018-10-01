@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Psychic Game</title>
+</head>
+
+<body>
+
+   <!-- Site Header -->
+   <header>
+      <!-- h1: The most important headline -->
+      <h1>The Psychic Game</h1>
+    </header>
+
+    <h3>Guess What Letter I'm Thinking Of</h3>
+
+  <div>
+    <p id="directions-text">Start playing  by pressing a letter from a - z!</p>
+    <p id="userchoice-text"></p>
+    <p id="computerchoice-text"></p>
+    <p id="wins-text"></p>
+
+    <p id="losses-text"></p>
+    <p id="guessesLeft-text"></p>
+    <p id="guesses-text"></p>
+  </div>
+
+  
+  <script type="text/javascript">
+    // Creates an array that lists out all of the options (chooses from a - z).
+    var computerChoices = ["a", "b", "c", "d",  "e", "f", "g", "h", "i", "j", "k", "l", "m",
+    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" ];
+
+     var guessesArray = ["a", "b", "c", "d",  "e", "f", "g", "h", "i" ];
+
+
+    
+        // Creating variables to hold the number of wins, losses, and ties. They start at 0.
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 9;
+    var guessesLost = 0;  
+
+    // Create variables that hold references to the places in the HTML where we want to display things.
+    var directionsText = document.getElementById("directions-text");
+    var userChoiceText = document.getElementById("userchoice-text");
+    var computerChoiceText = document.getElementById("computerchoice-text");
+    var winsText = document.getElementById("wins-text");
+    var lossesText = document.getElementById("losses-text");
+    var guessesLeftText = document.getElementById("guessesLeft-text");
+
+     var guessesText = document.getElementById("guesses-text");
+    // var guessesText[i] = document.getElementById("guesses-text");
+
+
+        // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+    // Determines which key was pressed.
+    var userGuess = event.key
+
+    // Randomly chooses a choice from the options array. This is the Computer's guess.
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+     if (userGuess === computerGuess) {
+          wins++;
+          guessesLeft = 9;
+
+          guessesText.textContent = "Your Guesses So Far: ";
+
+        } 
+     else if (userGuess !== computerGuess) {
+          guessesLeft--; 
+          guessesLost++; 
+          guessesArray[guessesLost] = userGuess;
+                                      
+        }
+     if (guessesLeft === 0) {
+         losses++;
+         guessesLeft = 9;
+         guessesLost = 0;
+
+         guessesText.textContent = "Your Guesses So Far: ";
+
+                
+        }      
+
+// Populate guessArray[i] with userGuess and display the all the guesses-->
+      if (guessesLost === 1) {
+           guessesArray[0] = userGuess;
+           console.log(guessesArray[0]);
+
+           guessesText.textContent = "Your Guesses So Far: " + guessesArray[0];     
+        
+      }     
+      if (guessesLost === 2) {
+           guessesArray[1] = userGuess;
+           console.log(guessesArray[1]);
+
+           guessesText.textContent = "Your Guesses So Far: " + guessesArray[0] + "," + guessesArray[1];     
+          //  guessesText.textContent = "Your Guesses So Far: " + guessesArray[1];     
+      }     
+
+       if (guessesLost === 3) {
+           guessesArray[2] = userGuess;
+           console.log(guessesArray[2]);
+
+           guessesText.textContent = "Your Guesses So Far: " + guessesArray[0] + ","+ guessesArray[1] + ","+ guessesArray[2];     
+          //  guessesText.textContent = "Your Guesses So Far: " + guessesArray[1];     
+      }     
+      if (guessesLost === 4) {
+           guessesArray[3] = userGuess;
+           console.log(guessesArray[3]);
+
+           guessesText.textContent = "Your Guesses So Far: " + guessesArray[0] + "," + guessesArray[1] + "," + guessesArray[2] + ","
+           + guessesArray[3];  
+       
+      }
+      if (guessesLost === 5) {
+           guessesArray[4] = userGuess;
+           console.log(guessesArray[4]);
+
+           guessesText.textContent = "Your Guesses So Far: " + guessesArray[0] + "," + guessesArray[1] + "," + guessesArray[2] + ","
+           + guessesArray[3] + "," + guessesArray[4];         
+
+      }
+      if (guessesLost === 6) {
+           guessesArray[5] = userGuess;
+           console.log(guessesArray[5]);
+
+           guessesText.textContent = "Your Guesses So Far: " + guessesArray[0] + "," + guessesArray[1] + "," + guessesArray[2] + ","
+           + guessesArray[3] 
+           + "," + guessesArray[4] + "," + guessesArray[5];         
+
+      }
+      if (guessesLost === 7) {
+           guessesArray[6] = userGuess;
+           console.log(guessesArray[6]);
+
+           guessesText.textContent = "Your Guesses So Far: " + guessesArray[0] + ","+ guessesArray[1] + "," + guessesArray[2] + ","
+           + guessesArray[3]  + "," + guessesArray[4] + ","  + guessesArray[5] + "," + guessesArray[6];         
+
+      }
+      if (guessesLost === 8) {
+           guessesArray[7] = userGuess;
+           console.log(guessesArray[7]);
+
+           guessesText.textContent = "Your Guesses So Far: " + guessesArray[0] + "," + guessesArray[1]  + ","+ guessesArray[2] + ","
+           + guessesArray[3] + ","  + guessesArray[4]  + "," + guessesArray[5] + "," + guessesArray[6] + ","+ guessesArray[7];         
+
+      }
+      if (guessesLost === 9) {
+           guessesArray[8] = userGuess;
+           console.log(guessesArray[8]);
+
+            guessesText.textContent = "Your Guesses So Far: ";
+
+
+          //  guessesText.textContent = "Your Guesses So Far: " + guessesArray[0] + guessesArray[1] + guessesArray[2]
+          //  + guessesArray[3]  + guessesArray[4]  + guessesArray[5]  + guessesArray[6]  + guessesArray[7] + guessesArray[8];         
+
+      }
+
+    
+        // Hide the directions
+        directionsText.textContent = "";
+
+
+       // Display the user and computer guesses, and wins/losses/ties.
+        userChoiceText.textContent = "You chose: " + userGuess;       
+        computerChoiceText.textContent = "The computer chose: " + computerGuess;
+        winsText.textContent = "Wins: " + wins;
+        lossesText.textContent = "Losses: " + losses;
+        guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
+        
+    }; 
+
+     
+
+    </script>
+
+</body>
+
+</html>
